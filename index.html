@@ -1,25 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pitch</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profit Idea for Future</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--red:#E23744;
+--dark:#0b0b0b;
+--glass:rgba(255,255,255,0.05);
+--border:rgba(255,255,255,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+background:var(--dark);
+color:white;
+font-family:'DM Sans',sans-serif;
+overflow-x:hidden;
+}
+
+/* CHARACTER */
+
+#character{
+position:fixed;
+bottom:0;
+left:0;
+width:240px;
+height:380px;
+z-index:999;
+pointer-events:none;
+}
+
+.pose{
+position:absolute;
+bottom:0;
+width:100%;
+height:100%;
+object-fit:contain;
+opacity:0;
+transform:translateY(20px) scale(.9);
+transition:opacity .6s ease,transform .6s ease;
+}
+
+.pose.active{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+#problem-img.active{transform:translateY(0) scale(1.15);}
+#final-img.active{transform:translateY(0) scale(1.22);}
+
+/* sections */
+
+section{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:80px 20px;
+}
+
+.container{
+max-width:900px;
+width:100%;
+}
+
+h1{
+font-family:'Syne';
+font-size:clamp(3rem,6vw,5rem);
+font-weight:800;
+letter-spacing:-2px;
+margin-bottom:20px;
+}
+
+h2{
+font-family:'Syne';
+font-size:clamp(2rem,4vw,3rem);
+margin-bottom:20px;
+}
+
+p{
+color:rgba(255,255,255,0.65);
+font-size:1.05rem;
+line-height:1.7;
+margin-bottom:30px;
+}
+
+.accent{color:var(--red)}
+
+.problems{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-top:25px;
+}
+
+.problem{
+background:var(--glass);
+border:1px solid var(--border);
+border-radius:14px;
+padding:22px;
+transition:0.35s;
+}
+
+.problem:hover{
+transform:translateY(-6px);
+border-color:rgba(226,55,68,0.4);
+box-shadow:0 20px 40px rgba(226,55,68,0.15);
+}
+
+.workflow{
+display:flex;
+flex-direction:column;
+gap:18px;
+margin-top:20px;
+}
+
+.step{
+display:flex;
+gap:16px;
+align-items:center;
+background:var(--glass);
+border:1px solid var(--border);
+padding:18px;
+border-radius:12px;
+}
+
+.step-number{
+font-family:'Syne';
+font-size:2rem;
+color:var(--red);
+font-weight:700;
+}
+
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:30px;
+}
+
+.stat-number{
+font-family:'Syne';
+font-size:2rem;
+color:var(--red);
+font-weight:800;
+}
+
+.stat-label{
+font-size:0.7rem;
+color:rgba(255,255,255,0.5);
+text-transform:uppercase;
+}
+
+@media(max-width:800px){
+
+.problems{grid-template-columns:1fr;}
+
+.stats{
+flex-direction:column;
+gap:20px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>Pitch</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Problem Statement</h2>
-            <img src="https://uploads.onecompiler.io/44ekyxpck/44g9c87kk/1000233297.png" class="pose" id="problem-img">
-            <p>This is where you describe the problem.</p>
-        </section>
-        <!-- other content -->
-    </main>
-    <footer>
-        <p>&copy; 2026 Pitch Inc.</p>
-    </footer>
+
+<!-- CHARACTER -->
+
+<div id="character">
+
+<img src="https://uploads.onecompiler.io/44ekyxpck/44g9fhcyv/1000233299.png" class="pose active" id="hero-img">
+
+<img src="https://uploads.onecompiler.io/44ekyxpck/44g9c87kk/1000233294.png" class="pose" id="problem-img">
+
+<img src="https://uploads.onecompiler.io/44ekyxpck/44g9c87kk/1000233297.png" class="pose" id="solution-img">
+
+<img src="https://uploads.onecompiler.io/44ekyxpck/44g9c87kk/1000233295.png" class="pose" id="final-img">
+
+</div>
+
+<!-- HERO -->
+
+<section id="hero">
+<div class="container">
+
+<h1>Profit Idea <span class="accent">for Future</span></h1>
+
+<p>
+A digital system helping street vendors manage orders
+and reduce queue chaos using QR ordering.
+</p>
+
+</div>
+</section>
+
+<!-- PROBLEM -->
+
+<section id="problem">
+<div class="container">
+
+<h2>The <span class="accent">Problem</span></h2>
+
+<div class="problems">
+
+<div class="problem">
+<h3>Vendor Discovery</h3>
+<p>Customers don't know where good street vendors are.</p>
+</div>
+
+<div class="problem">
+<h3>Queue Chaos</h3>
+<p>Busy stalls create confusion and long waits.</p>
+</div>
+
+<div class="problem">
+<h3>No Digital Menu</h3>
+<p>Customers cannot preview items easily.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SOLUTION -->
+
+<section id="solution">
+<div class="container">
+
+<h2>The <span class="accent">Solution</span></h2>
+
+<div class="workflow">
+
+<div class="step">
+<div class="step-number">01</div>
+<div>Scan QR at vendor stall</div>
+</div>
+
+<div class="step">
+<div class="step-number">02</div>
+<div>View menu instantly</div>
+</div>
+
+<div class="step">
+<div class="step-number">03</div>
+<div>Order digitally without chaos</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- FINAL -->
+
+<section id="final">
+<div class="container">
+
+<h2>A Small Idea With <span class="accent">Massive Impact</span></h2>
+
+<div class="stats">
+
+<div>
+<div class="stat-number">3</div>
+<div class="stat-label">Core Problems</div>
+</div>
+
+<div>
+<div class="stat-number">1</div>
+<div class="stat-label">Solution</div>
+</div>
+
+<div>
+<div class="stat-number">Millions</div>
+<div class="stat-label">Impact</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<script>
+
+const sections=document.querySelectorAll("section")
+
+const poses={
+hero:document.getElementById("hero-img"),
+problem:document.getElementById("problem-img"),
+solution:document.getElementById("solution-img"),
+final:document.getElementById("final-img")
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+
+let id=entry.target.id
+
+document.querySelectorAll(".pose").forEach(img=>{
+img.classList.remove("active")
+})
+
+if(poses[id]){
+poses[id].classList.add("active")
+}
+
+}
+})
+},{threshold:0.6})
+
+sections.forEach(sec=>observer.observe(sec))
+
+</script>
+
 </body>
 </html>
